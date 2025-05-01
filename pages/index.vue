@@ -6,7 +6,11 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const handleRetry = () => {
     if (origin) {
-        navigateTo(origin, {external: true})
+        let url = origin
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'https://' + url
+        }
+        navigateTo(url, {external: true})
     }
 }
 
